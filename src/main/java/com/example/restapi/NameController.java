@@ -1,14 +1,12 @@
 package com.example.restapi;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class NameController {
@@ -27,4 +25,11 @@ public class NameController {
         .toUri();
     return ResponseEntity.created(url).body("name successfully created");
   }
+
+  @PatchMapping("/names/{id}")
+  public ResponseEntity<Map<String, String>> update(@PathVariable("id") int id, @RequestBody UpdateForm form) {
+    // 更新処理は省略
+    return ResponseEntity.ok(Map.of("message", "name successfully updated"));
+  }
+
 }
