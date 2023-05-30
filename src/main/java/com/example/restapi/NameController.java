@@ -27,9 +27,11 @@ public class NameController {
   }
 
   @PatchMapping("/names/{id}")
-  public ResponseEntity<Map<String, String>> updateName(@PathVariable("id") int id, @RequestBody NameUpdateForm form) {
-    // 更新処理は省略
-    return ResponseEntity.ok(Map.of("message", "name successfully updated"));
+  public ResponseEntity<Map<String, String>> updateName(@PathVariable("id") String id, @RequestBody NameUpdateForm form) {
+    // パスパラメータのidを文字列で受け取る。
+    String message = "名前が正常に更新されました。ID: " + id;
+    return ResponseEntity.ok(Map.of("message", message));
+    //return ResponseEntity.ok(Map.of("message", "name successfully updated"));
   }
 
 }
