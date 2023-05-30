@@ -1,6 +1,6 @@
 package com.example.restapi;
 
-public class UpdateForm {
+public class NameUpdateForm {
   private String name;
 
   public String getName() {
