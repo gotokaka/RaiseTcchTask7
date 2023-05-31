@@ -22,7 +22,8 @@ public class NameController {
   }
 
   @PostMapping("/names")
-  public ResponseEntity<String> create(@RequestBody CreateForm form) {
+  public ResponseEntity<String> create(
+      @RequestBody CreateForm form) {
     // 登録処理は省略
     URI url = UriComponentsBuilder.fromUriString("http://localhost:8080")
         .path("/names/id") // id部分は実際に登録された際に発⾏したidを設定する
@@ -32,8 +33,9 @@ public class NameController {
   }
 
   @PatchMapping("/names/{id}")
-  public ResponseEntity<Map<String, String>> update
-      (@PathVariable("id") String id, @RequestBody NameUpdateForm form) {
+  public ResponseEntity<Map<String, String>> update(
+      @PathVariable("id") String id,
+      @RequestBody NameUpdateForm form) {
     return ResponseEntity.ok(Map.of("message", "name successfully updated"));
   }
 }
