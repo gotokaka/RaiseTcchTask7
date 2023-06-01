@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-public class NameController {
+public class UsersController {
 
   @GetMapping("/users")
   public String getUser(
