@@ -1,14 +1,14 @@
 package com.example.restapi;
 
 public class NameUpdateForm {
-  private String name;
+  private String userName;
 
   public String getName() {
-    return name;
+    return userName;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setUserName(String userName) {
+    this.userName = userName;
   }
-  
+
 }
