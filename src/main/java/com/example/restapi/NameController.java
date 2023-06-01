@@ -17,16 +17,14 @@ import java.util.Map;
 @RestController
 public class NameController {
 
-  @GetMapping("/hello")
-  public String hello(
-      /*@name属性とrequired属性の追加
-      nameとvalueは同じ値じゃないとエラーがでる。
-       */
+  @GetMapping("/users")
+  public String getUser(
       @RequestParam(name = "name", value = "name", defaultValue = "なし", required = false) String name,
-      //@RequestParamの追加
-      @RequestParam(name = "id", defaultValue = "なし", required = false) String id) {
+      @RequestParam(name = "id", defaultValue = "なし", required = false) String id,
+      //誕生日を取得するパラメータの追加
+      @RequestParam(name = "birthDate") String birthDate) {
     //returnで返す値を設定。
-    return "ID：" + id + "名前：" + name;
+    return "ID：" + id + "名前：" + name + "生年月日：" + birthDate;
   }
 
   //GETリクエストをListで返すメソッド
@@ -55,3 +53,5 @@ public class NameController {
     return ResponseEntity.ok(Map.of("message", "name successfully updated"));
   }
 }
+
+
