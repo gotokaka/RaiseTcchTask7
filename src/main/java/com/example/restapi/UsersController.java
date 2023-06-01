@@ -68,3 +68,8 @@ public class UsersController {
     return ResponseEntity.ok(Map.of("message", "name successfully deleted"));
   }
 }
+
+
+//現段階でのgit logの最新のものをresetしてしまった。git reset --hard HEAD@で修正したので実験push
+
+
