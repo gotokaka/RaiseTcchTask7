@@ -24,17 +24,18 @@ public class NameController {
        */
       @RequestParam(name = "name", value = "name", defaultValue = "なし", required = false) String name,
       //@RequestParamの追加
-      @RequestParam(name = "id") String id) {
+      @RequestParam(name = "id", defaultValue = "なし", required = false) String id) {
     //returnで返す値を設定。
     return "ID：" + id + "名前：" + name;
-    //return String.format("<h1>Hello %s!</h1>", name);
   }
 
+  //GETリクエストをListで返すメソッド
   @GetMapping("/names")
   public List<String> getNames() {
     return List.of("goto", "nakayama", "kinnikun");
   }
 
+  //POSTリクエストを返すメソッド
   @PostMapping("/names")
   public ResponseEntity<String> create(
       @RequestBody CreateForm form) {
@@ -46,6 +47,7 @@ public class NameController {
     return ResponseEntity.created(url).body("name successfully created");
   }
 
+  //PATCHリクエストを返すメソッド
   @PatchMapping("/names/{id}")
   public ResponseEntity<Map<String, String>> update(
       @PathVariable("id") String id,
