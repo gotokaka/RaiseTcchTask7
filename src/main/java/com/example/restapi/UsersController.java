@@ -69,7 +69,3 @@ public class UsersController {
   }
 }
 
-
-//現段階でのgit logの最新のものをresetしてしまった。git reset --hard HEAD@で修正したので実験push
-
-
