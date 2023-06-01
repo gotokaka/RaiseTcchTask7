@@ -1,6 +1,7 @@
 package com.example.restapi;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -52,6 +53,11 @@ public class UsersController {
       @RequestBody NameUpdateForm form) {
     return ResponseEntity.ok(Map.of("message", "name successfully updated"));
   }
+
+  //DELETEリクエストを返すメソッド
+  @DeleteMapping("/users/{id}")
+  public ResponseEntity<Map<String, String>> delete(
+      @PathVariable("id") int id) {
+    return ResponseEntity.ok(Map.of("message", "name successfully deleted"));
+  }
 }
-
-
