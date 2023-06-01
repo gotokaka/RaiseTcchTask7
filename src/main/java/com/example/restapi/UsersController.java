@@ -22,9 +22,8 @@ public class UsersController {
   public String getUser(
       @RequestParam(name = "name", value = "name", defaultValue = "なし", required = false) String name,
       @RequestParam(name = "id", defaultValue = "なし", required = false) String id,
-      //誕生日を取得するパラメータの追加
       @RequestParam(name = "birthDate") LocalDate birthDate) {
-    //returnで返す値を設定。
+
     return "ID：" + id + "名前：" + name + "生年月日：" + birthDate;
   }
 
