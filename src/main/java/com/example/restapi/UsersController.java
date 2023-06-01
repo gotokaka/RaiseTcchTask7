@@ -25,7 +25,7 @@ public class UsersController {
       @RequestParam(name = "id", defaultValue = "なし", required = false) String id,
       @RequestParam(name = "birthDate") LocalDate birthDate) {
 
-    return "ID：" + id + "名前：" + name + "生年月日：" + birthDate;
+    return "入力情報  " + "ユーザID：" + id + " 名前：" + name + " 生年月日：" + birthDate;
   }
 
   //GETリクエストをListで返すメソッド
