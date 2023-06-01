@@ -35,7 +35,7 @@ public class UsersController {
   }
 
   //POSTリクエストを返すメソッド
-  @PostMapping("/names")
+  @PostMapping("/users")
   public ResponseEntity<String> create(
       @RequestBody CreateForm form) {
     // 登録処理は省略
@@ -47,7 +47,7 @@ public class UsersController {
   }
 
   //PATCHリクエストを返すメソッド
-  @PatchMapping("/names/{id}")
+  @PatchMapping("/users/{id}")
   public ResponseEntity<Map<String, String>> update(
       @PathVariable("id") String id,
       @RequestBody NameUpdateForm form) {
