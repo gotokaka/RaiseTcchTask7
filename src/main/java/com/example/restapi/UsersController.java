@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -22,7 +23,7 @@ public class UsersController {
       @RequestParam(name = "name", value = "name", defaultValue = "なし", required = false) String name,
       @RequestParam(name = "id", defaultValue = "なし", required = false) String id,
       //誕生日を取得するパラメータの追加
-      @RequestParam(name = "birthDate") String birthDate) {
+      @RequestParam(name = "birthDate") LocalDate birthDate) {
     //returnで返す値を設定。
     return "ID：" + id + "名前：" + name + "生年月日：" + birthDate;
   }
