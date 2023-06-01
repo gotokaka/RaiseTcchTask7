@@ -19,8 +19,15 @@ public class NameController {
 
   @GetMapping("/hello")
   public String hello(
-      @RequestParam(value = "name", defaultValue = "kakapo") String name) {
-    return String.format("<h1>Hello %s!</h1>", name);
+      /*@name属性とrequired属性の追加
+      nameとvalueは同じ値じゃないとエラーがでる。
+       */
+      @RequestParam(name = "name", value = "name", defaultValue = "なし", required = false) String name,
+      //@RequestParamの追加
+      @RequestParam(name = "id") String id) {
+    //returnで返す値を設定。
+    return "ID：" + id + "名前：" + name;
+    //return String.format("<h1>Hello %s!</h1>", name);
   }
 
   @GetMapping("/names")
