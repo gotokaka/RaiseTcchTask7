@@ -2,7 +2,8 @@ package com.example.restapi;
 
 
 import jakarta.validation.constraints.NotBlank;
-import org.hibernate.validator.constraints.Range;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -29,9 +30,13 @@ public class UsersController {
   public String getUser(
       @RequestParam("userName")
       @NotBlank(message = "名前を入力してください") String userName,
+
       @RequestParam("id")
-      @Range(max = 1000, min = 0, message = "入力範囲超えています") String id,
+      @NotBlank
+      @Pattern(regexp = "^[0-9]{3}$", message = "3桁の数字を入力してください") String id,
+
       @RequestParam("birthDate")
+      @NotNull(message = "生年月日を入力してください")
       @DateTimeFormat(pattern = "yyyy/MM/dd")
       LocalDate birthDate) {
 
@@ -63,7 +68,7 @@ public class UsersController {
   //DELETEリクエストを返すメソッド
   @DeleteMapping("/users/{id}")
   public ResponseEntity<Map<String, String>> delete(
-      @PathVariable("id") String id) {
+      @PathVariable("id") int id) {
     return ResponseEntity.ok(Map.of("message", "name successfully deleted"));
   }
 }
