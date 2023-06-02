@@ -1,13 +1,13 @@
 package com.example.restapi;
 
 public class CreateForm {
-  private String name;
+  private String userName;
 
-  public String getName() {
-    return name;
+  public String getUserName() {
+    return userName;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setName(String userName) {
+    this.userName = userName;
   }
 }
