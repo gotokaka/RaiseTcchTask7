@@ -40,8 +40,7 @@ public class UsersController {
 
   //POSTリクエストを返すメソッド
   @PostMapping("/users")
-  public ResponseEntity<String> create(
-      @Validated
+  public ResponseEntity<Map<String, String>> create(
       @RequestBody
       CreateForm userName) {
     // 登録処理は省略
@@ -49,7 +48,7 @@ public class UsersController {
         .path("/userName/id") // id部分は実際に登録された際に発⾏したidを設定する
         .build()
         .toUri();
-    return ResponseEntity.created(url).body("name successfully created");
+    return ResponseEntity.ok(Map.of("message", "name successfully created"));
   }
 
   //PATCHリクエストを返すメソッド
@@ -64,7 +63,7 @@ public class UsersController {
   //DELETEリクエストを返すメソッド
   @DeleteMapping("/users/{id}")
   public ResponseEntity<Map<String, String>> delete(
-      @PathVariable("id") int id) {
+      @PathVariable("id") String id) {
     return ResponseEntity.ok(Map.of("message", "name successfully deleted"));
   }
 }
