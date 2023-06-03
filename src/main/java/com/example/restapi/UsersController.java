@@ -69,7 +69,7 @@ public class UsersController {
   //DELETEリクエストを返すメソッド
   @DeleteMapping("/users/{id}")
   public ResponseEntity<Map<String, String>> delete(
-      @PathVariable("id") int id) {
+      @PathVariable("id") String id) {
     return ResponseEntity.ok(Map.of("message", "name successfully deleted"));
   }
 }
