@@ -15,7 +15,7 @@ import java.util.Map;
 @RestControllerAdvice
 public class ValidationHandler {
 
-  @ExceptionHandler(ConstraintViolationException.class)
+  @ExceptionHandler(ConstraintViolationException.class)//処理したい例外
   public ResponseEntity<Map<String, List<String>>> handleConstraintViolationException(
       ConstraintViolationException ex) {
     Map<String, List<String>> errors = new HashMap<>();
