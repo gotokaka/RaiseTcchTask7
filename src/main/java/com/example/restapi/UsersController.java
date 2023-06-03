@@ -45,6 +45,7 @@ public class UsersController {
   @PostMapping("/users")
   public ResponseEntity<Map<String, String>> create(
       @RequestBody
+      @Validated
       CreateForm createForm) {
     // 登録処理は省略
     URI url = UriComponentsBuilder.fromUriString("http://localhost:8080")
@@ -58,7 +59,9 @@ public class UsersController {
   @PatchMapping("/users/{id}")
   public ResponseEntity<Map<String, String>> update(
       @PathVariable("id") String id,
-      @RequestBody NameUpdateForm form) {
+      @RequestBody
+      @Validated
+      NameUpdateForm form) {
     //更新処理は省略
     return ResponseEntity.ok(Map.of("message", "name successfully updated"));
   }
