@@ -2,7 +2,7 @@ package com.example.restapi;
 
 
 import jakarta.validation.constraints.NotBlank;
-import org.hibernate.validator.constraints.Range;
+import jakarta.validation.constraints.Pattern;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -24,13 +24,16 @@ import java.util.Map;
 @RestController
 public class UsersController {
 
-  //GETリクエストをListで返すメソッド
+  //GETリクエストを返すメソッド
   @GetMapping("/users")
   public String getUser(
       @RequestParam("userName")
       @NotBlank(message = "名前を入力してください") String userName,
+
       @RequestParam("id")
-      @Range(max = 1000, min = 0, message = "入力範囲超えています") String id,
+      @NotBlank(message = "idが空白です。入力してください。")
+      @Pattern(regexp = "^[0-9]{3}$", message = "半角英数で3桁の数字を入力してください") String id,
+
       @RequestParam("birthDate")
       @DateTimeFormat(pattern = "yyyy/MM/dd")
       LocalDate birthDate) {
@@ -42,7 +45,8 @@ public class UsersController {
   @PostMapping("/users")
   public ResponseEntity<Map<String, String>> create(
       @RequestBody
-      CreateForm userName) {
+      @Validated
+      CreateForm createForm) {
     // 登録処理は省略
     URI url = UriComponentsBuilder.fromUriString("http://localhost:8080")
         .path("/userName/id") // id部分は実際に登録された際に発⾏したidを設定する
@@ -55,7 +59,9 @@ public class UsersController {
   @PatchMapping("/users/{id}")
   public ResponseEntity<Map<String, String>> update(
       @PathVariable("id") String id,
-      @RequestBody NameUpdateForm form) {
+      @RequestBody
+      @Validated
+      NameUpdateForm form) {
     //更新処理は省略
     return ResponseEntity.ok(Map.of("message", "name successfully updated"));
   }

@@ -1,9 +1,24 @@
 package com.example.restapi;
 
-public class NameUpdateForm {
-  private String userName;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
-  public String getName() {
+public class NameUpdateForm {
+  @NotBlank(message = "名前を入力してください")
+  private String userName;
+  @NotBlank(message = "IDを入力してください")
+  @Pattern(regexp = "^[0-9]{3}$", message = "3桁の数字を入力してください")
+  private String id;
+
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public String getUserName() {
     return userName;
   }
 
